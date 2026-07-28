@@ -625,28 +625,90 @@
 <div>
 <h2 class="font-headline-lg text-headline-lg text-primary mb-6">Solicita tu presupuesto gratuito</h2>
 <p class="text-text-muted mb-8">Rellena el formulario y nos pondremos en contacto contigo en menos de 24 horas laborables para concertar una visita.</p>
-<form class="space-y-4">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<input class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary" placeholder="Nombre completo" type="text"/>
-<input class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary" placeholder="Teléfono" type="tel"/>
-</div>
-<input class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary" placeholder="Email" type="email"/>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<select class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary">
-<option>Tipo de reforma</option>
-<option>Integral</option>
-<option>Cocina</option>
-<option>Baño</option>
-<option>Otros</option>
-</select>
-<input class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary" placeholder="Barrio o Municipio" type="text"/>
-</div>
-<textarea class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary" placeholder="Cuéntanos brevemente tu idea..." rows="4"></textarea>
-<div class="flex items-start gap-3">
-<input class="mt-1 rounded text-secondary border-surface-container" type="checkbox"/>
-<span class="text-xs text-text-muted">Acepto la política de privacidad y el tratamiento de mis datos para la gestión del presupuesto.</span>
-</div>
-<button class="w-full bg-secondary hover:bg-cta-hover text-white font-bold py-5 rounded-lg transition-all shadow-lg text-lg">ENVIAR SOLICITUD</button>
+<form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  class="space-y-4"
+>
+  <!-- Sustituye TU_ACCESS_KEY por tu clave real de Web3Forms -->
+  <input type="hidden" name="access_key" value="e7cf4b7b-8c91-44a5-91fa-d9a66d783bc5">
+  <input type="hidden" name="subject" value="Nueva solicitud de presupuesto desde la web">
+  <input type="hidden" name="from_name" value="Web Reformas">
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <input
+      class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary"
+      placeholder="Nombre completo"
+      type="text"
+      name="nombre"
+      required
+    />
+    <input
+      class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary"
+      placeholder="Teléfono"
+      type="tel"
+      name="telefono"
+      required
+    />
+  </div>
+
+  <input
+    class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary"
+    placeholder="Email"
+    type="email"
+    name="email"
+    required
+  />
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <select
+      class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary"
+      name="tipo_reforma"
+      required
+    >
+      <option value="">Tipo de reforma</option>
+      <option value="Integral">Integral</option>
+      <option value="Cocina">Cocina</option>
+      <option value="Baño">Baño</option>
+      <option value="Otros">Otros</option>
+    </select>
+
+    <input
+      class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary"
+      placeholder="Barrio o Municipio"
+      type="text"
+      name="ubicacion"
+      required
+    />
+  </div>
+
+  <textarea
+    class="w-full border-surface-container rounded-lg p-4 focus:ring-secondary focus:border-secondary"
+    placeholder="Cuéntanos brevemente tu idea..."
+    rows="4"
+    name="mensaje"
+    required
+  ></textarea>
+
+  <div class="flex items-start gap-3">
+    <input
+      class="mt-1 rounded text-secondary border-surface-container"
+      type="checkbox"
+      name="privacidad"
+      required
+    />
+    <span class="text-xs text-text-muted">
+      Acepto la política de privacidad y el tratamiento de mis datos para la gestión del presupuesto.
+    </span>
+  </div>
+
+  <button
+    type="submit"
+    class="w-full bg-secondary hover:bg-cta-hover text-white font-bold py-5 rounded-lg transition-all shadow-lg text-lg"
+  >
+    ENVIAR SOLICITUD
+  </button>
 </form>
 </div>
 <!-- Contact Info & Map -->
